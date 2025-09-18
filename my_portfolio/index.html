@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+  <!-- Navbar -->
+  <header class="bg-indigo-600 text-white shadow-md">
+    <div class="container mx-auto flex justify-between items-center p-4">
+      <h1 class="text-2xl font-bold">My Portfolio</h1>
+      <nav>
+        <ul class="flex space-x-6">
+          <li><a href="#home" class="hover:text-yellow-300">Home</a></li>
+          <li><a href="#projects" class="hover:text-yellow-300">Projects</a></li>
+          <li><a href="#contact" class="hover:text-yellow-300">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="home" class="min-h-screen flex flex-col justify-center items-center bg-gradient-to-r from-indigo-500 to-purple-600 text-white">
+    <h2 class="text-4xl md:text-5xl font-bold mb-4">Hi, I'm Naveen K</h2>
+    <p class="text-lg md:text-xl max-w-2xl text-center mb-6">
+      A passionate web developer eager to create stunning, responsive, and user-friendly websites.
+    </p>
+    <a href="#projects" class="bg-yellow-400 text-black px-6 py-3 rounded-lg font-semibold hover:bg-yellow-500 transition">See My Projects</a>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="py-16 bg-gray-100">
+    <div class="container mx-auto text-center">
+      <h2 class="text-3xl font-bold mb-10">Projects</h2>
+
+      <div class="grid gap-8 md:grid-cols-3">
+        <!-- Project Card 1 -->
+        <div class="bg-white shadow-lg rounded-xl p-6 hover:scale-105 transition">
+          <h3 class="text-xl font-semibold mb-3">Porfolio Website</h3>
+          <p class="text-gray-600 mb-4">This is a placeholder for your future project.</p>
+          <button class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700">View More</button>
+        </div>
+
+        <!-- Project Card 2 -->
+        <div class="bg-white shadow-lg rounded-xl p-6 hover:scale-105 transition">
+          <h3 class="text-xl font-semibold mb-3">College Mini Project</h3>
+          <p class="text-gray-600 mb-4">Another placeholder project card.</p>
+          <button class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700">View More</button>
+        </div>
+
+        <!-- Project Card 3 -->
+        <div class="bg-white shadow-lg rounded-xl p-6 hover:scale-105 transition">
+          <h3 class="text-xl font-semibold mb-3">Sample Blog Design</h3>
+          <p class="text-gray-600 mb-4">This section can showcase real work later.</p>
+          <button class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700">View More</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Form -->
+  <section id="contact" class="py-16 bg-white">
+    <div class="container mx-auto max-w-xl">
+      <h2 class="text-3xl font-bold text-center mb-8">Contact Me</h2>
+
+      <form id="contactForm" class="bg-gray-100 shadow-lg rounded-xl p-8 space-y-4">
+        <div>
+          <label class="block font-medium mb-1">Name</label>
+          <input type="text" id="name" class="w-full p-3 rounded-md border focus:outline-none focus:ring-2 focus:ring-indigo-400">
+        </div>
+
+        <div>
+          <label class="block font-medium mb-1">Email</label>
+          <input type="email" id="email" class="w-full p-3 rounded-md border focus:outline-none focus:ring-2 focus:ring-indigo-400">
+        </div>
+
+        <div>
+          <label class="block font-medium mb-1">Message</label>
+          <textarea id="message" rows="4" class="w-full p-3 rounded-md border focus:outline-none focus:ring-2 focus:ring-indigo-400"></textarea>
+        </div>
+
+        <button type="submit" class="w-full bg-indigo-600 text-white py-3 rounded-lg font-semibold hover:bg-indigo-700">Send</button>
+      </form>
+
+      <p id="formMsg" class="mt-4 text-center text-green-600 font-medium hidden">Message sent successfully!</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-indigo-600 text-white text-center py-4">
+    <p>© 2025 My Portfolio | Task 1</p>
+  </footer>
+
+  <!-- JavaScript for Form Validation -->
+  <script>
+    document.getElementById("contactForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      let name = document.getElementById("name").value.trim();
+      let email = document.getElementById("email").value.trim();
+      let message = document.getElementById("message").value.trim();
+      let formMsg = document.getElementById("formMsg");
+
+      if (name === "" || email === "" || message === "") {
+        alert("Please fill out all fields!");
+        return;
+      }
+
+      let emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+      if (!email.match(emailPattern)) {
+        alert("Enter a valid email address!");
+        return;
+      }
+
+      formMsg.classList.remove("hidden");
+      this.reset();
+    });
+  </script>
+
+</body>
+</html>
