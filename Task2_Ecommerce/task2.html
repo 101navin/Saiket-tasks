@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>E-Commerce Landing Page</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+  <!-- Header/Navbar -->
+  <header class="bg-indigo-600 text-white shadow-md">
+    <div class="container mx-auto flex justify-between items-center p-4">
+      <h1 class="text-2xl font-bold">ShopEasy</h1>
+      <nav>
+        <ul class="flex space-x-6">
+          <li><a href="#home" class="hover:text-yellow-300">Home</a></li>
+          <li><a href="#products" class="hover:text-yellow-300">Products</a></li>
+          <li><a href="#subscribe" class="hover:text-yellow-300">Subscribe</a></li>
+        </ul>
+      </nav>
+      <button id="toggleMode" class="bg-yellow-400 text-black px-3 py-1 rounded-md hover:bg-yellow-500">Dark Mode</button>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="home" class="min-h-screen flex flex-col justify-center items-center bg-gradient-to-r from-indigo-500 to-purple-600 text-white text-center px-4">
+    <h2 class="text-4xl md:text-5xl font-bold mb-4">Welcome to ShopEasy</h2>
+    <p class="text-lg md:text-xl max-w-2xl mb-6">
+      Your one-stop shop for trendy fashion and lifestyle products. Affordable, stylish, and delivered to your door.
+    </p>
+    <a href="#products" class="bg-yellow-400 text-black px-6 py-3 rounded-lg font-semibold hover:bg-yellow-500 transition">Shop Now</a>
+  </section>
+
+  <!-- Products Section -->
+  <section id="products" class="py-16 bg-gray-100">
+    <div class="container mx-auto text-center">
+      <h2 class="text-3xl font-bold mb-10">Featured Products</h2>
+      <div class="grid gap-8 md:grid-cols-3">
+
+        <!-- Product Card -->
+        <div class="bg-white shadow-lg rounded-xl p-6 hover:scale-105 transition">
+          <img src="https://via.placeholder.com/200" alt="Product 1" class="mx-auto mb-4 rounded-md">
+          <h3 class="text-xl font-semibold mb-2">Stylish T-Shirt</h3>
+          <p class="text-gray-600 mb-3">Comfortable cotton T-shirt for everyday wear.</p>
+          <span class="block text-lg font-bold mb-3">₹499</span>
+          <button class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700">Add to Cart</button>
+        </div>
+
+        <div class="bg-white shadow-lg rounded-xl p-6 hover:scale-105 transition">
+          <img src="https://via.placeholder.com/200" alt="Product 2" class="mx-auto mb-4 rounded-md">
+          <h3 class="text-xl font-semibold mb-2">Running Shoes</h3>
+          <p class="text-gray-600 mb-3">Lightweight shoes designed for comfort and speed.</p>
+          <span class="block text-lg font-bold mb-3">₹1,299</span>
+          <button class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700">Add to Cart</button>
+        </div>
+
+        <div class="bg-white shadow-lg rounded-xl p-6 hover:scale-105 transition">
+          <img src="https://via.placeholder.com/200" alt="Product 3" class="mx-auto mb-4 rounded-md">
+          <h3 class="text-xl font-semibold mb-2">Smart Watch</h3>
+          <p class="text-gray-600 mb-3">Track your health and stay connected on the go.</p>
+          <span class="block text-lg font-bold mb-3">₹2,999</span>
+          <button class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700">Add to Cart</button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Subscribe Section -->
+  <section id="subscribe" class="py-16 bg-white">
+    <div class="container mx-auto max-w-lg text-center">
+      <h2 class="text-3xl font-bold mb-6">Stay Updated</h2>
+      <p class="mb-6 text-gray-600">Subscribe to get exclusive offers and updates on our latest products.</p>
+
+      <form id="subscribeForm" class="flex flex-col md:flex-row items-center justify-center gap-4">
+        <input type="email" id="email" placeholder="Enter your email" class="flex-1 p-3 rounded-md border focus:outline-none focus:ring-2 focus:ring-indigo-400">
+        <button type="submit" class="bg-indigo-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-indigo-700">Subscribe</button>
+      </form>
+      <p id="formMsg" class="mt-4 text-green-600 font-medium hidden">Subscribed successfully!</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-indigo-600 text-white text-center py-4">
+    <p>© 2025 ShopEasy | Designed with ❤️ using Tailwind</p>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    // Toggle Dark Mode
+    const toggleBtn = document.getElementById("toggleMode");
+    toggleBtn.addEventListener("click", () => {
+      document.body.classList.toggle("bg-gray-900");
+      document.body.classList.toggle("text-white");
+      toggleBtn.textContent = 
+        toggleBtn.textContent === "Dark Mode" ? "Light Mode" : "Dark Mode";
+    });
+
+    // Newsletter Form Validation
+    document.getElementById("subscribeForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      let email = document.getElementById("email").value.trim();
+      let formMsg = document.getElementById("formMsg");
+
+      if (email === "") {
+        alert("Please enter your email!");
+        return;
+      }
+      let emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+      if (!email.match(emailPattern)) {
+        alert("Enter a valid email address!");
+        return;
+      }
+
+      formMsg.classList.remove("hidden");
+      this.reset();
+    });
+  </script>
+
+</body>
+</html>
