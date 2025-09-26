@@ -47,8 +47,8 @@ function App() {
           <li key={index}>
             {task}
             <div className="buttons">
-              <button onClick={() => editTask(index)}>✏️ Edit</button>
-              <button onClick={() => deleteTask(index)}>❌ Delete</button>
+              <button onClick={() => editTask(index)}>Edit</button>
+              <button onClick={() => deleteTask(index)}>Delete</button>
             </div>
           </li>
         ))}
