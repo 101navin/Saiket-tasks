@@ -1,35 +1,60 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState } from "react";
+import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [tasks, setTasks] = useState([]);
+  const [newTask, setNewTask] = useState("");
+  const [editingIndex, setEditingIndex] = useState(null);
+
+  const addTask = () => {
+    if (newTask.trim() === "") return;
+    if (editingIndex !== null) {
+      const updatedTasks = [...tasks];
+      updatedTasks[editingIndex] = newTask;
+      setTasks(updatedTasks);
+      setEditingIndex(null);
+    } else {
+      setTasks([...tasks, newTask]);
+    }
+    setNewTask("");
+  };
+
+  const deleteTask = (index) => {
+    setTasks(tasks.filter((_, i) => i !== index));
+  };
+
+  const editTask = (index) => {
+    setNewTask(tasks[index]);
+    setEditingIndex(index);
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
+    <div className="app">
+      <h1>📝 To-Do List</h1>
+      <div className="input-section">
+        <input
+          type="text"
+          value={newTask}
+          onChange={(e) => setNewTask(e.target.value)}
+          placeholder="Enter a task..."
+        />
+        <button onClick={addTask}>
+          {editingIndex !== null ? "Update" : "Add"}
         </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+      <ul>
+        {tasks.map((task, index) => (
+          <li key={index}>
+            {task}
+            <div className="buttons">
+              <button onClick={() => editTask(index)}>✏️ Edit</button>
+              <button onClick={() => deleteTask(index)}>❌ Delete</button>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
 }
 
-export default App
+export default App;
