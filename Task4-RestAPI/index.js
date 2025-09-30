@@ -4,6 +4,17 @@ const app = express();
 
 // Middleware to parse JSON
 app.use(express.json());
+// TEMP: request logger — helps debug incoming requests
+app.use((req, res, next) => {
+  console.log(new Date().toISOString(), req.method, req.url);
+  next();
+});
+
+// TEMP: add a simple root route to quickly test connectivity
+app.get('/', (req, res) => {
+  res.send('API is running — root OK');
+});
+
 
 // Dummy user data (acts like a small DB)
 let users = [
