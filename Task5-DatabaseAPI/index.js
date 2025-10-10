@@ -10,10 +10,10 @@ app.use(bodyParser.json());
 
 // PostgreSQL connection
 const pool = new Pool({
-  user: "postgres",        // 👈 change this if your username is different
+  user: "postgres",        
   host: "localhost",
-  database: "userdb",      // 👈 your created DB name
-  password: "your_password", // 👈 your PostgreSQL password
+  database: "userdb",  
+  password: "root", 
   port: 5432,
 });
 
